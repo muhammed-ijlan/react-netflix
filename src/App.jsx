@@ -1,7 +1,11 @@
+import React from "react";
+import Home from "./home/Home";
+import './App.scss'
+
 const App = () => {
-  return <div>
-    Hello
-  </div>
+  return <React.Fragment>
+    <Home />
+  </React.Fragment>
 };
 
 export default App;
