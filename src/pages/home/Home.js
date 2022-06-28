@@ -15,7 +15,7 @@ export default function Home({ type }) {
             try {
                 const res = await axios.get(`lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjk4NWY5YTg5ODQ0YjUzOTk5MjQwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjQxMDEwOSwiZXhwIjoxNjU2ODQyMTA5fQ.2qPjfs_rPxn-3eT-4xvueyf7R2sKkzXEKWDwzh3BZ3s"
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjk4NWY5YTg5ODQ0YjUzOTk5MjQwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjQyMTY0OSwiZXhwIjoxNjU2ODUzNjQ5fQ.ofJhGdBu1Nr1hc9K-BJ5C-sEUt2Q0ubEWZU3VPX91Hs"
                     }
                 });
 

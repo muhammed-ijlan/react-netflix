@@ -34,7 +34,7 @@ export default function ListItem({ index, item }) {
             <div className='listItem'
                 style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
                 onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-                <img src={movie.imgSmall} alt="img" />
+                <img src={movie.imgSmall} alt="movieImage" />
                 {isHovered && (
                     <React.Fragment>
                         <video src={movie.trailer} autoPlay={true} loop />
