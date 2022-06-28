@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 
 import Home from "./pages/home/Home";
 import './App.scss'
@@ -8,29 +8,43 @@ import Login from './pages/login/Login'
 import Watch from './pages/watch/Watch'
 
 
-
 const App = () => {
+  const user = true;
+
   return <React.Fragment>
     <Router>
 
       <Switch>
 
         <Route exact path='/'>
-          <Home />
+          {user ? <Home /> : <Redirect to='/register' />}
         </Route>
 
-        <Route path='/movies'>
-          <Home type="movies" />
+        <Route path='/register'>
+          {!user ? <Register /> : <Redirect to='/' />}
         </Route>
 
-        <Route path='/series'>
-          <Home type="series" />
+        <Route path='/login'>
+          {!user ? <Login /> : <Redirect to='/' />}
         </Route>
+        {
 
-        <Route path='/watch'>
-          <Watch />
-        </Route>
+          user && (
+            <>
+              <Route path='/movies'>
+                <Home type="movies" />
+              </Route>
 
+              <Route path='/series'>
+                <Home type="series" />
+              </Route>
+
+              <Route path='/watch'>
+                <Watch />
+              </Route>
+            </>
+          )
+        }
       </Switch>
 
     </Router>
