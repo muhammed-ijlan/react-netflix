@@ -1,7 +1,6 @@
 import { ArrowDropDown, Notifications, Search } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Home from '../../pages/home/Home'
 import './Navbar.scss'
 
 const Navbar = () => {
@@ -11,7 +10,6 @@ const Navbar = () => {
         setIsScrolled(window.pageYOffset === 0 ? false : true)
         return () => window.onscroll = null
     }
-    console.log(isScrolled);
 
     return (
         <div className={isScrolled ? "navbar scrolled" : "navbar"}>

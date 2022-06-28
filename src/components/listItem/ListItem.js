@@ -1,22 +1,40 @@
 import { PlayArrow, Add, ThumbUpAltOutlined, ThumbDownOutlined } from '@material-ui/icons'
-import React, { useState } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import './ListItem.scss'
 
-export default function ListItem({ index }) {
+export default function ListItem({ index, item }) {
     const [isHovered, setIsHovered] = useState(false)
+    const [movie, setMovie] = useState({})
 
-    const trailer = "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+    useEffect(() => {
+        const getMovie = async () => {
+            try {
 
+                const res = await axios.get("/movies/find/" + item, {
+                    headers: {
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjk4NWY5YTg5ODQ0YjUzOTk5MjQwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjQxMDEwOSwiZXhwIjoxNjU2ODQyMTA5fQ.2qPjfs_rPxn-3eT-4xvueyf7R2sKkzXEKWDwzh3BZ3s"
+                    }
+                })
 
+                setMovie(res.data)
+
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getMovie();
+    }, [item])
 
     return (
         <div className='listItem'
             style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
             onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-            <img src="https://woottoncommonsense.com/wp-content/uploads/2020/12/RgOWIjNBqW2ASCmQ3wuGb5GAYnDSRHd1EMipCwJI.jpeg" alt="" />
+            <img src={movie.imgSmall} alt="img" />
             {isHovered && (
                 <React.Fragment>
-                    <video src={trailer} autoPlay={true} loop />
+                    <video src={movie.trailer} autoPlay={true} loop />
                     <div className="itemInfo">
                         <div className="icons">
                             <PlayArrow className='icon' />
@@ -25,15 +43,15 @@ export default function ListItem({ index }) {
                             <ThumbDownOutlined className='icon' />
                         </div>
                         <div className="itemInfoTop">
-                            <span>1 hour 14 mins</span>
-                            <span className='limit'>17+</span>
-                            <span>1998</span>
+                            <span>{movie.duration}</span>
+                            <span className='limit'>{movie.limit}</span>
+                            <span>{movie.year}</span>
                         </div>
                         <div className="description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos nisi sed corrupti ex eos quasi perferendis cumque totam earum accusantium excepturi
+                            {movie.description}
                         </div>
                         <div className="genre">
-                            Action
+                            {movie.genre}
                         </div>
 
                     </div>
