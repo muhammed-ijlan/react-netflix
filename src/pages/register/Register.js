@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import "./Register.scss";
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 export default function Register() {
     const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ export default function Register() {
         e.preventDefault();
 
         setPassword(passwordRef.current.value);
-        setUsername(usernameRef.current.value)
+        setUsername(usernameRef.current.value);
         try {
             await axios.post("auth/register", { email, username, password })
             history.push('/login')
@@ -40,9 +40,9 @@ export default function Register() {
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
                         alt=""
                     />
-                    <button className="loginButton">Sign In</button>
                 </div>
             </div>
+
             <div className="container">
                 <h1>Unlimited movies, TV shows, and more.</h1>
                 <h2>Watch anywhere. Cancel anytime.</h2>
@@ -53,7 +53,7 @@ export default function Register() {
                     <div className="input">
                         <input type="email" placeholder="email address" ref={emailRef} />
                         <button className="registerButton" onClick={handleStart}>
-                            Get Started
+                            Register
                         </button>
                     </div>
                 ) : (
@@ -65,6 +65,10 @@ export default function Register() {
                         </button>
                     </form>
                 )}
+                <p className="orPara">or</p>
+                <div className="regLog">
+                    <Link to='/login'> <button className="loginButton">Sign In</button></Link>
+                </div>
             </div>
         </div>
     );
