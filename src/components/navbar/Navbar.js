@@ -27,11 +27,11 @@ const Navbar = () => {
                     </Link>
 
                     <Link className='link' to='/series'>
-                        <span>Series</span>
+                        <span className='navbarMainLinks'>Series</span>
                     </Link>
 
                     <Link className='link' to="/movies">
-                        <span>Movies</span>
+                        <span className='navbarMainLinks'>Movies</span>
                     </Link>
 
                     <span>New And Popular</span>
