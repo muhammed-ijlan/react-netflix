@@ -15,7 +15,7 @@ export default function Home({ type }) {
             try {
                 const res = await axios.get(`lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjk4NWY5YTg5ODQ0YjUzOTk5MjQwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjU4MjA0NywiZXhwIjoxNjU3MDE0MDQ3fQ.D2f7nlKC1PzRLNneQHtIbzAcj2Kd5QjxM656qMhaS8g"
+                        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
                     }
                 });
 
