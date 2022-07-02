@@ -15,7 +15,7 @@ export default function Home({ type }) {
             try {
                 const res = await axios.get(`lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjk4NWY5YTg5ODQ0YjUzOTk5MjQwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjQyMTY0OSwiZXhwIjoxNjU2ODUzNjQ5fQ.ofJhGdBu1Nr1hc9K-BJ5C-sEUt2Q0ubEWZU3VPX91Hs"
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYjk4NWY5YTg5ODQ0YjUzOTk5MjQwYSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjU4MjA0NywiZXhwIjoxNjU3MDE0MDQ3fQ.D2f7nlKC1PzRLNneQHtIbzAcj2Kd5QjxM656qMhaS8g"
                     }
                 });
 
@@ -33,7 +33,7 @@ export default function Home({ type }) {
     return (
         <div className="home">
             <Navbar />
-            <Featured type={type} />
+            <Featured type={type} setGenre={setGenre} />
             {lists.map(list => (
                 <List list={list} />)
 
