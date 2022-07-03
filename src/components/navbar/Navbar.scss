@@ -1,4 +1,4 @@
-@import "../../App.scss";
+@import "../../app.scss";
 
 .navbar {
   width: 100%;
@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   z-index: 999;
-  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 1) 50%);
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
 
   &.scrolled {
     background-color: var(--main-color);
@@ -23,14 +23,16 @@
     .left {
       display: flex;
       align-items: center;
+
       img {
-        height: 50px;
+        height: 25px;
         margin-right: 40px;
 
         @include mobile {
           display: none;
         }
       }
+
       span {
         margin-right: 20px;
         cursor: pointer;
@@ -39,16 +41,23 @@
           display: none;
         }
 
-        &.navbarMainLinks {
+        &.navbarmainLinks {
           @include tablet {
             display: block;
           }
         }
       }
     }
+
     .right {
       display: flex;
       align-items: center;
+
+      .icon {
+        margin: 0px 15px;
+        cursor: pointer;
+      }
+
       img {
         width: 30px;
         height: 30px;
@@ -56,20 +65,19 @@
         object-fit: cover;
         cursor: pointer;
       }
-      .icon {
-        margin: 0px 15px;
-        cursor: pointer;
-      }
+
       .profile {
         .options {
           display: none;
           background-color: var(--main-color);
           border-radius: 5px;
         }
+
         span {
           padding: 10px;
           cursor: pointer;
         }
+
         &:hover {
           .options {
             display: flex;
