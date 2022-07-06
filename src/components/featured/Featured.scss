@@ -24,18 +24,23 @@
     }
   }
 
-  #genre{
+  #genre {
     z-index: 2;
   }
 
-  img {
+  .imgBanner {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+  .imgTitle {
+    height: 10rem;
+    object-fit: contain;
+    margin-left: 0;
+  }
 
   .info {
-    width: 35%;
+    width: 25%;
     position: absolute;
     left: 50px;
     bottom: 60px;
@@ -43,9 +48,19 @@
     display: flex;
     flex-direction: column;
 
-    img {
-      width: 40vw;
-      margin-top: 100px;
+    // img {
+    //   width: 40vw;
+    //   margin-top: 100px;
+    // }
+    .imgTitle {
+      height: 10rem;
+      object-fit: contain;
+      margin-left: 0;
+
+      @include mobile {
+        width: 40vw;
+        margin-top: 100px;
+      }
     }
 
     .desc {
