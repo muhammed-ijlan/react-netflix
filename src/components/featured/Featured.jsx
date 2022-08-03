@@ -1,8 +1,7 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./Featured.scss";
-import { axiosInstance } from './../../config';
+import "./featured.scss";
 
 export default function Featured({ type, setGenre }) {
   const [content, setContent] = useState({});
@@ -10,10 +9,11 @@ export default function Featured({ type, setGenre }) {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axiosInstance.get(`/movies/random?type=${type}`, {
+        const res = await axios.get(`/movies/random?type=${type}`, {
           headers: {
             token:
-              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWE4MzQ0ZGZmMmY1MWVlNDU4MWE4YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1OTUzNjQyMCwiZXhwIjoxNjU5OTY4NDIwfQ.Ichrith3RMEhXHb_aR5a7hbNLXBN2hTDduiwd8UHD7g"
+            // +JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setContent(res.data[0]);
@@ -52,9 +52,9 @@ export default function Featured({ type, setGenre }) {
           </select>
         </div>
       )}
-      <img className="imgBanner" src={content.img} alt="" />
+      <img src={content.img} alt="" />
       <div className="info">
-        <img className="imgTitle" src={content.imgTitle} alt="" />
+        <img src={content.imgTitle} alt="" />
         <span className="desc">{content.desc}</span>
         <div className="buttons">
           <button className="play">

@@ -1,4 +1,4 @@
-import "./ListItem.scss";
+import "./listItem.scss";
 import {
   PlayArrow,
   Add,
@@ -8,7 +8,6 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { axiosInstance } from "../../config";
 
 export default function ListItem({ index, item }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -17,10 +16,11 @@ export default function ListItem({ index, item }) {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axiosInstance.get("/movies/find/" + item, {
+        const res = await axios.get("/movies/find/" + item, {
           headers: {
             token:
-              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWE4MzQ0ZGZmMmY1MWVlNDU4MWE4YiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1OTUzNjQyMCwiZXhwIjoxNjU5OTY4NDIwfQ.Ichrith3RMEhXHb_aR5a7hbNLXBN2hTDduiwd8UHD7g"
+            // +JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setMovie(res.data);
@@ -39,7 +39,7 @@ export default function ListItem({ index, item }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie.img} alt="" />
+        <img src={movie?.imgSm} alt="" />
         {isHovered && (
           <>
             <video src={movie.trailer} autoPlay={true} loop />
