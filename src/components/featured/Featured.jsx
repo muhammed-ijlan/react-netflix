@@ -1,7 +1,7 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./featured.scss";
+import "./Featured.scss";
 import { axiosInstance } from './../../config';
 
 export default function Featured({ type, setGenre }) {

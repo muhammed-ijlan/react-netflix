@@ -4,7 +4,7 @@ import {
 } from "@material-ui/icons";
 import { useRef, useState } from "react";
 import ListItem from "../listItem/ListItem";
-import "./list.scss";
+import "./List.scss";
 
 export default function List({ list }) {
   const [isMoved, setIsMoved] = useState(false);
